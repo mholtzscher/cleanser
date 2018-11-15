@@ -4,7 +4,6 @@ import re
 REDDIT_MENTIONS = re.compile(r"/?u/\S+")
 REDDIT_SUBREDDITS = re.compile(r"/?r/\S+")
 WHITESPACE = re.compile(r"\s\s+")
-# EMOJI=re.compile(r"/[\u{1F600}-\u{1F6FF}]/")
 RE_EMOJI = re.compile(r"[\U00010000-\U0010ffff]", flags=re.UNICODE)
 
 
@@ -18,9 +17,14 @@ def reddit_subreddits(text: str) -> str:
     return REDDIT_SUBREDDITS.sub("", text)
 
 
-def urls(text: str) -> str:
-    """Removes urls from text."""
-    return text
+# def urls(text: str) -> str:
+#     """Removes urls from text."""
+#     return text
+
+
+def emoji(text: str) -> str:
+    """Removes emojis from text."""
+    return RE_EMOJI.sub("", text)
 
 
 def whitespace(text: str) -> str:
@@ -28,6 +32,11 @@ def whitespace(text: str) -> str:
     return WHITESPACE.sub(" ", text).strip()
 
 
-def emoji(text: str) -> str:
-    """Removes emojis from text."""
-    return RE_EMOJI.sub(r"", text)
+def all(text: str) -> str:
+    """Apply all cleansers to text."""
+    text = reddit_mentions(text)
+    text = reddit_subreddits(text)
+    # text = urls(text)
+    text = emoji(text)
+    text = whitespace(text)
+    return text
