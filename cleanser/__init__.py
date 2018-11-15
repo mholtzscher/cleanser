@@ -32,7 +32,7 @@ def whitespace(text: str) -> str:
     return WHITESPACE.sub(" ", text).strip()
 
 
-def all(text: str) -> str:
+def cleanse(text: str) -> str:
     """Apply all cleansers to text."""
     text = reddit_mentions(text)
     text = reddit_subreddits(text)
