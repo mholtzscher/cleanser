@@ -40,7 +40,7 @@ jobs:
     - stage: mypy
       python: "3.6"
       script:
-        - mypy cleanser
+        - make mypy
 
     - stage: pylint
       python: "3.6"

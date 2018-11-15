@@ -3,3 +3,6 @@ test:
 
 lint:
 	poetry run pylint cleanser
+
+mypy:
+	poetry run mypy cleanser
