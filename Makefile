@@ -12,4 +12,4 @@ mypy:
 	poetry run mypy cleanser
 
 format:
-	poetry run black cleanser
+	poetry run black cleanser tests
