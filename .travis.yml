@@ -19,7 +19,7 @@ install:
   - source $HOME/.poetry/env
   - poetry install -v
 
-script: pytest -q tests/
+script: make test
 
 jobs:
   include:
@@ -45,4 +45,4 @@ jobs:
     - stage: pylint
       python: "3.6"
       script:
-        - pylint cleanser
+        - make lint
