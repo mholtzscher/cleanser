@@ -1,3 +1,4 @@
+"""Holds regular expression patterns for cleansing"""
 import re
 
 REDDIT_MENTIONS = re.compile(r"/?u/\S+")
