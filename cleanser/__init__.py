@@ -1,10 +1,12 @@
 """Utilities for cleaning text."""
 import re
-
-REDDIT_MENTIONS = re.compile(r"/?u/\S+")
-REDDIT_SUBREDDITS = re.compile(r"/?r/\S+")
-WHITESPACE = re.compile(r"\s\s+")
-RE_EMOJI = re.compile(r"[\U00010000-\U0010ffff]", flags=re.UNICODE)
+from cleanser.regex import (
+    URL_REGEX,
+    REDDIT_MENTIONS,
+    REDDIT_SUBREDDITS,
+    WHITESPACE,
+    RE_EMOJI,
+)
 
 
 def reddit_mentions(text: str) -> str:
@@ -17,9 +19,9 @@ def reddit_subreddits(text: str) -> str:
     return REDDIT_SUBREDDITS.sub("", text)
 
 
-# def urls(text: str) -> str:
-#     """Removes urls from text."""
-#     return text
+def urls(text: str) -> str:
+    """Removes urls from text."""
+    return URL_REGEX.sub("", text)
 
 
 def emoji(text: str) -> str:
@@ -36,7 +38,7 @@ def cleanse(text: str) -> str:
     """Apply all cleansers to text."""
     text = reddit_mentions(text)
     text = reddit_subreddits(text)
-    # text = urls(text)
+    text = urls(text)
     text = emoji(text)
     text = whitespace(text)
     return text
