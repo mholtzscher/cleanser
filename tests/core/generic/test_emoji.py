@@ -1,4 +1,4 @@
-from cleanser import emoji
+from cleanser.core.generic import emoji
 
 
 def test_basic():

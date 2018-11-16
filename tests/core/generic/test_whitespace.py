@@ -1,4 +1,4 @@
-from cleanser import whitespace
+from cleanser.core.generic import whitespace
 
 
 def test_spaces():

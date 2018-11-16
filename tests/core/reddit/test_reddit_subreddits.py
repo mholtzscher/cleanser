@@ -1,4 +1,4 @@
-from cleanser import reddit_subreddits
+from cleanser.core.reddit import reddit_subreddits
 
 
 def test_simple():

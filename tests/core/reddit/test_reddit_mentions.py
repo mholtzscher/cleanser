@@ -1,4 +1,4 @@
-from cleanser import reddit_mentions
+from cleanser.core.reddit import reddit_mentions
 
 
 def test_simple():

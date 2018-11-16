@@ -1,4 +1,5 @@
-from cleanser import reddit_quotes, whitespace
+from cleanser.core.reddit import reddit_quotes
+from cleanser.core.generic import whitespace
 
 sample = """
 You are wrong.

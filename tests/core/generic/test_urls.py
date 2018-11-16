@@ -1,4 +1,4 @@
-from cleanser import urls
+from cleanser.core.generic import urls
 import pytest
 
 
