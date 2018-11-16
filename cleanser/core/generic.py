@@ -1,3 +1,4 @@
+"""Common methods for cleaning text."""
 import re
 
 WHITESPACE = re.compile(r"\s\s+")

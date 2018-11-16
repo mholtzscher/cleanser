@@ -1,3 +1,4 @@
+"""Utilities specifically for cleaning text from Reddit."""
 import re
 
 REDDIT_MENTIONS = re.compile(r"/?u/\S+")
