@@ -1,10 +1,10 @@
-from cleanser.core.generic import urls
+from cleanser.core.generic import url
 import pytest
 
 
 def test_basic():
     text = "You should look at https://google.com"
-    assert urls(text) == "You should look at "
+    assert url(text) == "You should look at "
 
 
 @pytest.mark.parametrize(
@@ -17,4 +17,4 @@ def test_basic():
     ],
 )
 def test_patterns(text, expected):
-    assert urls(text) == expected
+    assert url(text) == expected

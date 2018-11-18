@@ -24,3 +24,11 @@ def test_newlines():
         whitespace(text)
         == "I am a longer piece of text. The best food is pizza. I can't write poetry."
     )
+
+
+def test_newline_nospaces():
+    text = "Hi there.\nI'm Tom."
+    assert whitespace(text) == "Hi there. I'm Tom."
+
+    text = "Hi there.\n\nI'm Tom."
+    assert whitespace(text) == "Hi there. I'm Tom."
