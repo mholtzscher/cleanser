@@ -1,7 +1,6 @@
 from cleanser import purify
 
 
-# TODO
 def test_remove_all():
     text = """Hi there.\nI'm Tom."""
     assert purify(text, reddit=True) == "Hi there. I'm Tom."

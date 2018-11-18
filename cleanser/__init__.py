@@ -1,11 +1,22 @@
 """Utilities for cleaning text."""
 import re
-from cleanser.core.reddit import reddit_mentions, reddit_quotes, reddit_subreddits
+from cleanser.core.reddit import (
+    reddit_mentions,
+    reddit_quotes,
+    reddit_subreddits,
+    reddit_bold_italics,
+    reddit_code,
+)
 from cleanser.core.generic import whitespace, url, emoji
 
 
-def _purify_reddit(
-    text: str, mentions: bool = True, subreddits: bool = True, quotes: bool = True
+def purify_reddit(
+    text: str,
+    mentions: bool = True,
+    subreddits: bool = True,
+    quotes: bool = True,
+    bold_italics: bool = True,
+    code: bool = True,
 ) -> str:
     """Removes common Reddit elements from text."""
     if mentions:
@@ -14,6 +25,10 @@ def _purify_reddit(
         text = reddit_subreddits(text)
     if quotes:
         text = reddit_quotes(text)
+    if bold_italics:
+        text = reddit_bold_italics(text)
+    if code:
+        text = reddit_code(text)
     return text
 
 
@@ -32,5 +47,5 @@ def purify(
     if emojis:
         text = emoji(text)
     if reddit:
-        text = _purify_reddit(text, **kwargs)
+        text = purify_reddit(text, **kwargs)
     return text

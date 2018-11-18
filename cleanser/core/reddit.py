@@ -4,6 +4,8 @@ import re
 REDDIT_MENTIONS = re.compile(r"/?u/\S+")
 REDDIT_SUBREDDITS = re.compile(r"/?r/\S+")
 REDDIT_QUOTES = re.compile(r"^\>.*$", flags=re.MULTILINE)
+REDDIT_BOLD_ITALICS = re.compile(r"\*+")
+REDDIT_CODE = re.compile(r"\`")
 
 
 def reddit_mentions(text: str) -> str:
@@ -17,5 +19,15 @@ def reddit_subreddits(text: str) -> str:
 
 
 def reddit_quotes(text: str) -> str:
-    """Removes reddit quotes from test."""
+    """Removes reddit quotes from text."""
     return REDDIT_QUOTES.sub("", text)
+
+
+def reddit_bold_italics(text: str) -> str:
+    """Removes reddit bolding and italics from text."""
+    return REDDIT_BOLD_ITALICS.sub("", text)
+
+
+def reddit_code(text: str) -> str:
+    """Removes reddit code formatting from text."""
+    return REDDIT_CODE.sub("", text)
