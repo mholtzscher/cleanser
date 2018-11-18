@@ -7,6 +7,8 @@ REDDIT_QUOTES = re.compile(r"^\>.*$", flags=re.MULTILINE)
 REDDIT_BOLD_ITALICS = re.compile(r"\*+")
 REDDIT_CODE = re.compile(r"\`")
 REDDIT_SUPERSCRIPT = re.compile(r"\^")
+REDDIT_HEADERS = re.compile(r"\#+")
+REDDIT_STRIKETHROUGH = re.compile(r"~{2}")
 
 
 def reddit_mentions(text: str) -> str:
@@ -37,3 +39,13 @@ def reddit_code(text: str) -> str:
 def reddit_superscript(text: str) -> str:
     """Removes reddit superscript formatting from text."""
     return REDDIT_SUPERSCRIPT.sub("", text)
+
+
+def reddit_headers(text: str) -> str:
+    """Removes reddit header formatting from text."""
+    return REDDIT_HEADERS.sub("", text)
+
+
+def reddit_strikethrough(text: str) -> str:
+    """Removes reddit strikethrough formatting from text."""
+    return REDDIT_STRIKETHROUGH.sub("", text)
