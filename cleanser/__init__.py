@@ -6,6 +6,7 @@ from cleanser.core.reddit import (
     reddit_subreddits,
     reddit_bold_italics,
     reddit_code,
+    reddit_superscript,
 )
 from cleanser.core.generic import whitespace, url, emoji
 
@@ -17,6 +18,7 @@ def purify_reddit(
     quotes: bool = True,
     bold_italics: bool = True,
     code: bool = True,
+    superscript: bool = True,
 ) -> str:
     """Removes common Reddit elements from text."""
     if mentions:
@@ -29,6 +31,8 @@ def purify_reddit(
         text = reddit_bold_italics(text)
     if code:
         text = reddit_code(text)
+    if superscript:
+        text = reddit_superscript(text)
     return text
 
 
