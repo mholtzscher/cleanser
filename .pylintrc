@@ -140,7 +140,7 @@ disable=print-statement,
         deprecated-sys-function,
         exception-escape,
         comprehension-escape,
-        C,
+        C0330,
         too-many-arguments
 
 # Enable the message, report, category or checker with the given id(s). You can

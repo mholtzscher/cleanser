@@ -52,6 +52,7 @@ def purify(
     reddit: bool = False,
     **kwargs
 ) -> str:
+    """Cleanses text and purifies it."""
     if whitespaces:
         text = whitespace(text)
     if urls:
