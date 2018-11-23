@@ -1,5 +1,4 @@
 """Utilities for cleaning text."""
-import re
 from cleanser.core.reddit import (
     reddit_mentions,
     reddit_quotes,
