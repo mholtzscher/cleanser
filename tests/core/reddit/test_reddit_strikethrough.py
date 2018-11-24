@@ -2,15 +2,15 @@ from cleanser.core.reddit import reddit_strikethrough
 
 
 def test_strikethrough():
-    r = reddit_strikethrough("~~This is an example of strikethrough~~")
-    assert "This is an example of strikethrough" == r
+    result = reddit_strikethrough("~~An example of strikethrough~~I should remain.")
+    assert result == "This text should remain."
 
 
 def test_no_strikethrough_single_tilde():
-    r = reddit_strikethrough("~This is not an example of strikethrough~")
-    assert "~This is not an example of strikethrough~" == r
+    result = reddit_strikethrough("~This is not an example of strikethrough~")
+    assert result == "~This is not an example of strikethrough~"
 
 
 def test_no_strikethrough():
-    r = reddit_strikethrough("There are ~2 lbs in a kilogram")
-    assert "There are ~2 lbs in a kilogram" == r
+    result = reddit_strikethrough("There are ~2 lbs in a kilogram")
+    assert result == "There are ~2 lbs in a kilogram"
