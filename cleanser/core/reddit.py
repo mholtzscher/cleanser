@@ -8,7 +8,8 @@ REDDIT_BOLD_ITALICS = re.compile(r"\*+")
 REDDIT_CODE = re.compile(r"\`")
 REDDIT_SUPERSCRIPT = re.compile(r"\^")
 REDDIT_HEADERS = re.compile(r"\#+")
-REDDIT_STRIKETHROUGH = re.compile(r"~{2}")
+REDDIT_STRIKETHROUGH = re.compile(r"~{2}.*~{2}")
+REDDIT_SPOILERS = re.compile(r">!|!<")
 
 
 def reddit_mentions(text: str) -> str:
@@ -47,5 +48,10 @@ def reddit_headers(text: str) -> str:
 
 
 def reddit_strikethrough(text: str) -> str:
-    """Removes reddit strikethrough formatting from text."""
+    """Removes reddit strikethrough formatted text."""
     return REDDIT_STRIKETHROUGH.sub("", text)
+
+
+def reddit_spoilers(text: str) -> str:
+    """Removes reddit spoiler formatting from text."""
+    return REDDIT_SPOILERS.sub("", text)
