@@ -1,21 +1,25 @@
-from cleanser.core.reddit import reddit_subreddits
+from cleanser import Cleanser
 
 
 def test_simple():
-    r = reddit_subreddits("/r/askreddit is pretty cool.")
+    r = Cleanser("/r/askreddit is pretty cool.").reddit_subreddits().text
     assert " is pretty cool." == r
 
 
 def test_multiple():
-    r = reddit_subreddits("/r/askreddit is pretty cool but r/dankmemes is better.")
+    r = (
+        Cleanser("/r/askreddit is pretty cool but r/dankmemes is better.")
+        .reddit_subreddits()
+        .text
+    )
     assert " is pretty cool but  is better." == r
 
 
 def test_short_format():
-    r = reddit_subreddits("r/askreddit")
+    r = Cleanser("r/askreddit").reddit_subreddits().text
     assert "" == r
 
 
 def test_long_format():
-    r = reddit_subreddits("/r/dankmemes")
+    r = Cleanser("/r/dankmemes").reddit_subreddits().text
     assert "" == r

@@ -1,16 +1,24 @@
-from cleanser.core.reddit import reddit_strikethrough
+from cleanser import Cleanser
 
 
 def test_strikethrough():
-    result = reddit_strikethrough("~~An example of strikethrough~~I should remain.")
+    result = (
+        Cleanser("~~An example of strikethrough~~I should remain.")
+        .reddit_strikethrough()
+        .text
+    )
     assert result == "I should remain."
 
 
 def test_no_strikethrough_single_tilde():
-    result = reddit_strikethrough("~This is not an example of strikethrough~")
+    result = (
+        Cleanser("~This is not an example of strikethrough~")
+        .reddit_strikethrough()
+        .text
+    )
     assert result == "~This is not an example of strikethrough~"
 
 
 def test_no_strikethrough():
-    result = reddit_strikethrough("There are ~2 lbs in a kilogram")
+    result = Cleanser("There are ~2 lbs in a kilogram").reddit_strikethrough().text
     assert result == "There are ~2 lbs in a kilogram"

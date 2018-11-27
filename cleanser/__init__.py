@@ -1,3 +1,4 @@
+"""Cleanser"""
 from cleanser.core.generic import Generic
 from cleanser.core.reddit import Reddit
 

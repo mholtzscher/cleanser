@@ -1,7 +1,6 @@
-from cleanser.core.reddit import reddit_quotes
-from cleanser.core.generic import whitespace
+from cleanser import Cleanser
 
-sample = """
+SAMPLE = """
 You are wrong.
 
 > you can't do that in space
@@ -17,11 +16,10 @@ You are right.
 def test_basic():
     text = """> you can't stink in a vacuum
     Hi there."""
-    r = reddit_quotes(text)
+    r = Cleanser(text).reddit_quotes().text
     assert r == "\n    Hi there."
 
 
 def test_sample_text():
-    r = reddit_quotes(sample)
-    r = whitespace(r)
+    r = Cleanser(SAMPLE).reddit_quotes().whitespaces().text
     assert r == "You are wrong. Well, astronauts have said stuff. You are right."

@@ -1,6 +1,6 @@
-from cleanser.core.reddit import reddit_superscript
+from cleanser import Cleanser
 
 
 def test_simple():
-    r = reddit_superscript("reddit is pretty ^cool and f^r^e^s^h.")
+    r = Cleanser("reddit is pretty ^cool and f^r^e^s^h.").reddit_superscript().text
     assert "reddit is pretty cool and fresh." == r

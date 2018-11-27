@@ -1,21 +1,25 @@
-from cleanser.core.reddit import reddit_mentions
+from cleanser import Cleanser
 
 
 def test_simple():
-    r = reddit_mentions("/u/spez is pretty cool.")
+    r = Cleanser("/u/spez is pretty cool.").reddit_mentions().text
     assert " is pretty cool." == r
 
 
 def test_multiple():
-    r = reddit_mentions("/u/spez is pretty cool but u/fuckswithducks is better.")
+    r = (
+        Cleanser("/u/spez is pretty cool but u/fuckswithducks is better.")
+        .reddit_mentions()
+        .text
+    )
     assert " is pretty cool but  is better." == r
 
 
 def test_short_format():
-    r = reddit_mentions("u/spez")
+    r = Cleanser("u/spez").reddit_mentions().text
     assert "" == r
 
 
 def test_long_format():
-    r = reddit_mentions("/u/spez")
+    r = Cleanser("/u/spez").reddit_mentions().text
     assert "" == r

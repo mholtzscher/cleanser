@@ -11,11 +11,12 @@ REDDIT_SUPERSCRIPT = re.compile(r"\^")
 REDDIT_HEADERS = re.compile(r"\#+")
 REDDIT_STRIKETHROUGH = re.compile(r"~{2}.*~{2}")
 REDDIT_SPOILERS = re.compile(r">!|!<")
-# TODO: finish reddit links
 # REDDIT_LINKS = re.compile(r"\[.*\]\(.*\)")
 
 
 class Reddit(Base):
+    """Common methods for cleaning text from Reddit."""
+
     def reddit_mentions(self):
         """Removes reddit user mentions from text."""
         self.text = REDDIT_MENTIONS.sub("", self.text)

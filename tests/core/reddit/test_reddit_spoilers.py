@@ -1,11 +1,11 @@
-from cleanser.core.reddit import reddit_spoilers
+from cleanser import Cleanser
 
 
 def test_simple():
-    result = reddit_spoilers(">!spoiler!<")
+    result = Cleanser(">!spoiler!<").reddit_spoilers().text
     assert result == "spoiler"
 
 
 def test_middle_text():
-    result = reddit_spoilers("In Infinity War >!everyone dies!!<")
+    result = Cleanser("In Infinity War >!everyone dies!!<").reddit_spoilers().text
     assert result == "In Infinity War everyone dies!"
