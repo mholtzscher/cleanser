@@ -1,67 +1,9 @@
-"""Utilities for cleaning text."""
-from cleanser.core.reddit import (
-    reddit_mentions,
-    reddit_quotes,
-    reddit_subreddits,
-    reddit_bold_italics,
-    reddit_code,
-    reddit_superscript,
-    reddit_headers,
-    reddit_strikethrough,
-    reddit_spoilers,
-)
-from cleanser.core.generic import whitespace, url, emoji
+from cleanser.core.generic import Generic
+from cleanser.core.reddit import Reddit
 
 
-def purify_reddit(
-    text: str,
-    mentions: bool = True,
-    subreddits: bool = True,
-    quotes: bool = True,
-    bold_italics: bool = True,
-    code: bool = True,
-    superscript: bool = True,
-    headers: bool = True,
-    strikethrough: bool = True,
-    spoilers: bool = True,
-) -> str:
-    """Removes common Reddit elements from text."""
-    if mentions:
-        text = reddit_mentions(text)
-    if subreddits:
-        text = reddit_subreddits(text)
-    if quotes:
-        text = reddit_quotes(text)
-    if bold_italics:
-        text = reddit_bold_italics(text)
-    if code:
-        text = reddit_code(text)
-    if superscript:
-        text = reddit_superscript(text)
-    if headers:
-        text = reddit_headers(text)
-    if strikethrough:
-        text = reddit_strikethrough(text)
-    if spoilers:
-        text = reddit_spoilers(text)
-    return text
+class Cleanser(Generic, Reddit):
+    """Class does stuff"""
 
-
-def purify(
-    text: str,
-    whitespaces: bool = True,
-    urls: bool = True,
-    emojis: bool = True,
-    reddit: bool = False,
-    **kwargs
-) -> str:
-    """Cleanses text and purifies it."""
-    if whitespaces:
-        text = whitespace(text)
-    if urls:
-        text = url(text)
-    if emojis:
-        text = emoji(text)
-    if reddit:
-        text = purify_reddit(text, **kwargs)
-    return text
+    def __init__(self, text):
+        self.text = text

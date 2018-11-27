@@ -1,13 +1,16 @@
-from cleanser.core.generic import emoji
+from cleanser import Cleanser
 
 
 def test_basic():
-    assert emoji("Python is 👍") == "Python is "
+    assert Cleanser("Python is 👍").emoji().text == "Python is "
 
 
 def test_multiple():
-    assert emoji("😺😺 Pyt🦃🐉hon is 👌😀😀") == " Python is "
+    assert Cleanser("😺😺 Pyt🦃🐉hon is 👌😀😀").emoji().text == " Python is "
 
 
 def test_unicode():
-    assert emoji(u"\U0001F1E6\U0001F1F1Python is \U0001F947") == "Python is "
+    assert (
+        Cleanser(u"\U0001F1E6\U0001F1F1Python is \U0001F947").emoji().text
+        == "Python is "
+    )
