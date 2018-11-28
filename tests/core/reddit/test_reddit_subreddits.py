@@ -2,24 +2,24 @@ from cleanser import Cleanser
 
 
 def test_simple():
-    r = Cleanser("/r/askreddit is pretty cool.").reddit_subreddits().text
-    assert " is pretty cool." == r
+    text = "/r/askreddit is pretty cool."
+    expected = " is pretty cool."
+    assert Cleanser(text).reddit_subreddits().text == expected
 
 
 def test_multiple():
-    r = (
-        Cleanser("/r/askreddit is pretty cool but r/dankmemes is better.")
-        .reddit_subreddits()
-        .text
-    )
-    assert " is pretty cool but  is better." == r
+    text = "/r/askreddit is pretty cool but r/dankmemes is better."
+    expected = " is pretty cool but  is better."
+    assert Cleanser(text).reddit_subreddits().text == expected
 
 
 def test_short_format():
-    r = Cleanser("r/askreddit").reddit_subreddits().text
-    assert "" == r
+    text = "r/askreddit"
+    expected = ""
+    assert Cleanser(text).reddit_subreddits().text == expected
 
 
 def test_long_format():
-    r = Cleanser("/r/dankmemes").reddit_subreddits().text
-    assert "" == r
+    text = "/r/dankmemes"
+    expected = ""
+    assert Cleanser(text).reddit_subreddits().text == expected

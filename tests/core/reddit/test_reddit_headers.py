@@ -2,15 +2,18 @@ from cleanser import Cleanser
 
 
 def test_single():
-    r = Cleanser("#This is an example H1 Header").reddit_headers().text
-    assert "This is an example H1 Header" == r
+    text = "#This is an example H1 Header"
+    expected = "This is an example H1 Header"
+    assert Cleanser(text).reddit_headers().text == expected
 
 
 def test_double():
-    r = Cleanser("##This is an example H2 Header").reddit_headers().text
-    assert "This is an example H2 Header" == r
+    text = "##This is an example H2 Header"
+    expected = "This is an example H2 Header"
+    assert Cleanser(text).reddit_headers().text == expected
 
 
 def test_triple():
-    r = Cleanser("###This is an example H3 Header").reddit_headers().text
-    assert "This is an example H3 Header" == r
+    text = "###This is an example H3 Header"
+    expected = "This is an example H3 Header"
+    assert Cleanser(text).reddit_headers().text == expected

@@ -2,23 +2,18 @@ from cleanser import Cleanser
 
 
 def test_strikethrough():
-    result = (
-        Cleanser("~~An example of strikethrough~~I should remain.")
-        .reddit_strikethrough()
-        .text
-    )
-    assert result == "I should remain."
+    text = "~~An example of strikethrough~~I should remain."
+    expected = "I should remain."
+    assert Cleanser(text).reddit_strikethrough().text == expected
 
 
 def test_no_strikethrough_single_tilde():
-    result = (
-        Cleanser("~This is not an example of strikethrough~")
-        .reddit_strikethrough()
-        .text
-    )
-    assert result == "~This is not an example of strikethrough~"
+    text = "~This is not an example of strikethrough~"
+    expected = "~This is not an example of strikethrough~"
+    assert Cleanser(text).reddit_strikethrough().text == expected
 
 
 def test_no_strikethrough():
-    result = Cleanser("There are ~2 lbs in a kilogram").reddit_strikethrough().text
-    assert result == "There are ~2 lbs in a kilogram"
+    text = "There are ~2 lbs in a kilogram"
+    expected = "There are ~2 lbs in a kilogram"
+    assert Cleanser(text).reddit_strikethrough().text == expected
