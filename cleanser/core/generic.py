@@ -17,12 +17,12 @@ class Generic(Base):
         self.text = RE_WHITESPACE.sub(" ", self.text).strip()
         return self
 
-    def emoji(self):
+    def emojis(self):
         """Removes emojis from text."""
         self.text = RE_EMOJI.sub("", self.text)
         return self
 
-    def url(self):
+    def urls(self):
         """Removes urls from text."""
         self.text = URL_REGEX.sub("", self.text)
         return self
