@@ -23,3 +23,9 @@ def test_basic():
 def test_sample_text():
     expected = "You are wrong. Well, astronauts have said stuff. You are right."
     assert Cleanser(SAMPLE).reddit_quotes().whitespaces().text == expected
+
+
+def test_content_removal():
+    expected = "You are wrong. you can't do that in space Well, astronauts have said stuff. would actually harden in space You are right."
+    result = Cleanser(SAMPLE).reddit_quotes(content_removal=False).whitespaces().text
+    assert result == expected

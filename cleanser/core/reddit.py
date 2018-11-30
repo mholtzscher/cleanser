@@ -27,13 +27,25 @@ class Reddit(Base):
         self.text = REDDIT_SUBREDDITS.sub("", self.text)
         return self
 
-    def reddit_quotes(self):
-        """Removes reddit quotes from text."""
-        self.text = REDDIT_QUOTES.sub("", self.text)
+    def reddit_quotes(self, content_removal=True):
+        """Removes reddit quote blocks from text.
+
+        Args:
+            content_removal: Whether to remove the content of the quote block
+
+        Returns:
+            The Cleanser instance with the text modified in place.
+        """
+        if content_removal:
+            self.text = REDDIT_QUOTES.sub("", self.text)
+        else:
+            for quote in REDDIT_QUOTES.findall(self.text):
+                mod = quote.replace(">", "")
+                self.text = self.text.replace(quote, mod)
         return self
 
     def reddit_bold_italics(self):
-        """Removes reddit bolding and italics from text."""
+        """Removes reddit bolding and italics formatting from text."""
         self.text = REDDIT_BOLD_ITALICS.sub("", self.text)
         return self
 
@@ -52,9 +64,21 @@ class Reddit(Base):
         self.text = REDDIT_HEADERS.sub("", self.text)
         return self
 
-    def reddit_strikethrough(self):
-        """Removes reddit strikethrough formatted text."""
-        self.text = REDDIT_STRIKETHROUGH.sub("", self.text)
+    def reddit_strikethrough(self, content_removal=True):
+        """Removes reddit strikethrough formatted text.
+
+        Args:
+            content_removal: Whether to remove the content of the strikethrough
+
+        Returns:
+            The Cleanser instance with the text modified in place.
+        """
+        if content_removal:
+            self.text = REDDIT_STRIKETHROUGH.sub("", self.text)
+        else:
+            for quote in REDDIT_STRIKETHROUGH.findall(self.text):
+                mod = quote.replace("~~", "")
+                self.text = self.text.replace(quote, mod)
         return self
 
     def reddit_spoilers(self):
