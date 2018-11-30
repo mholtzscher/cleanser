@@ -27,7 +27,7 @@ class Reddit(Base):
         self.text = REDDIT_SUBREDDITS.sub("", self.text)
         return self
 
-    def reddit_quotes(self, content_removal=True):
+    def reddit_quotes(self, content_removal: bool = True):
         """Removes reddit quote blocks from text.
 
         Args:
@@ -64,7 +64,7 @@ class Reddit(Base):
         self.text = REDDIT_HEADERS.sub("", self.text)
         return self
 
-    def reddit_strikethrough(self, content_removal=True):
+    def reddit_strikethrough(self, content_removal: bool = True):
         """Removes reddit strikethrough formatted text.
 
         Args:
