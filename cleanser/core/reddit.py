@@ -11,7 +11,7 @@ REDDIT_SUPERSCRIPT = re.compile(r"\^")
 REDDIT_HEADERS = re.compile(r"\#+")
 REDDIT_STRIKETHROUGH = re.compile(r"~{2}.*~{2}")
 REDDIT_SPOILERS = re.compile(r">!|!<")
-# REDDIT_LINKS = re.compile(r"\[.*\]\(.*\)")
+REDDIT_LINKS = re.compile(r"\[.*\]\(.*\)")
 
 
 class Reddit(Base):
@@ -84,4 +84,9 @@ class Reddit(Base):
     def reddit_spoilers(self):
         """Removes reddit spoiler formatting from text."""
         self.text = REDDIT_SPOILERS.sub("", self.text)
+        return self
+
+    def reddit_links(self):
+        """Removes reddit links from text. Removes the link text and URL"""
+        self.text = REDDIT_LINKS.sub("", self.text)
         return self
