@@ -1,4 +1,5 @@
 from cleanser import Cleanser
+import html
 
 SAMPLE = """
 You are wrong.
@@ -18,6 +19,13 @@ def test_basic():
     Hi there."""
     expected = "\n    Hi there."
     assert Cleanser(text).reddit_quotes().text == expected
+
+
+def test_unescaped_quote_symobl():
+    text = """&gt; you can't stink in a vacuum
+    Hi there."""
+    expected = "Hi there."
+    assert Cleanser(text).unescape_html().reddit_quotes().whitespaces().text == expected
 
 
 def test_sample_text():

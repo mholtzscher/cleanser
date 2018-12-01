@@ -1,4 +1,5 @@
 """Common generic methods for cleaning text."""
+import html
 import re
 from cleanser.core import Base
 
@@ -25,4 +26,9 @@ class Generic(Base):
     def urls(self):
         """Removes urls from text."""
         self.text = URL_REGEX.sub("", self.text)
+        return self
+
+    def unescape_html(self):
+        """Unescape HTML in text."""
+        self.text = html.unescape(self.text)
         return self
