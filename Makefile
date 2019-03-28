@@ -5,6 +5,10 @@ setup:
 test:
 	poetry run pytest --cov=cleanser -q tests/
 
+ci-test:
+	poetry run pytest tests/ --cov=cleanser --cov-report html
+	poetry run codecov
+
 lint:
 	poetry run pylint cleanser
 
