@@ -37,7 +37,7 @@ class Generic(Base):
     def double_punctuation(self):
         """Removes occurences of double punctuation with single instance of char"""
         punctuation = ".,?!:;*"
-        for p in punctuation:
-            pattern = "\\" + p + "{2,}"
-            self.text = re.sub(pattern, p, self.text)
+        for punc in punctuation:
+            pattern = "\\" + punc + "{2,}"
+            self.text = re.sub(pattern, punc, self.text)
         return self
