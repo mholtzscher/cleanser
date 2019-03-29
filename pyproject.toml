@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cleanser"
-version = "0.2.2"
+version = "0.2.3"
 description = "Tools for cleaning text."
 
 license = "MIT"
