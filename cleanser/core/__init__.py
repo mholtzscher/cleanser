@@ -13,7 +13,7 @@ class Base:
         return self._text
 
     @text.setter
-    def text(self, value):
+    def text(self, value: str):
         """Property setter for text that is being cleansed"""
         self._text = value
 

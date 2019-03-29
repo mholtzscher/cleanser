@@ -27,7 +27,7 @@ class Generic(Base):
         self.text = URL_REGEX.sub("", self.text)
         return self
 
-    def char(self, char):
+    def char(self, char: str):
         """Removes all occurences of char from text."""
         if len(char) > 1:
             raise ValueError("char parameter can only be 1 character")
