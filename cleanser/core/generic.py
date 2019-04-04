@@ -27,11 +27,18 @@ class Generic(Base):
         self.text = URL_REGEX.sub("", self.text)
         return self
 
-    def char(self, char: str):
+    def char(self, char: str, replacement: str = ""):
         """Removes all occurences of char from text."""
-        if len(char) > 1:
+        if not char or len(char) > 1:
             raise ValueError("char parameter can only be 1 character")
-        self.text = self.text.replace(char, "")
+        self.text = self.text.replace(char, replacement)
+        return self
+
+    def word(self, word: str, replacement: str = ""):
+        """Removes all occurences of given word from text."""
+        if not word:
+            raise ValueError("word parameter cannot be empty or None")
+        self.text = self.text.replace(word, replacement)
         return self
 
     def double_punctuation(self):
