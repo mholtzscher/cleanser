@@ -42,6 +42,8 @@ jobs:
 
   - script: make ci-test
     displayName: 'pytest'
+    env:
+      CODECOV_TOKEN: '3e4c04b8-2569-4289-b598-b4fb47183d46'
 
 - job: 'Test_Windows'
   pool:
