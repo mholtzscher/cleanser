@@ -1,5 +1,6 @@
 """Common generic methods for cleaning text."""
 import re
+import string
 from cleanser.core import Base
 
 RE_WHITESPACE = re.compile(r"\s+")
@@ -47,4 +48,11 @@ class Generic(Base):
         for punc in punctuation:
             pattern = "\\" + punc + "{2,}"
             self.text = re.sub(pattern, punc, self.text)
+        return self
+
+    def punctuation(self, subset: list = None, replacement: str = ""):
+        """Removes all occurences punctuation from text"""
+        punctuation = subset or string.punctuation
+        for punc in punctuation:
+            self.text = self.text.replace(punc, replacement)
         return self
