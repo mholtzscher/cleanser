@@ -22,7 +22,7 @@ from cleanser import Cleanser
 
 text = """Hello World....
 
-😺😺 Pyt🦃🐉hon is 👌😀😀 awesome  
+😺😺 Python is 👌😀😀 awesome  
 """
 
 Cleanser(text).emoji().double_punctuation().whitespaces().text
