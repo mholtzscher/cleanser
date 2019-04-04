@@ -4,6 +4,7 @@ setup:
 
 test:
 	poetry run pytest --cov=cleanser -q tests/
+	rm test-output.xml
 
 ci-test:
 	poetry run pytest tests/ --cov=cleanser --cov-report html
